@@ -1,24 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Main from "./components/Main/Main";
+import Sidebar from "./components/Sidebar/Sidebar";
+import {fetchCity, fetchData} from "./store/actions/weather";
+import {useActions} from "./hooks/useActions";
+import {useTypesSelector} from "./hooks/useTypesSelector";
+import classes from "./components/Main/Main.module.scss";
 
 function App() {
+  const {city, id, loading, error} = useTypesSelector(state => state.weather)
+  const [converter, setConverter] = React.useState(false);
+  const {fetchData} = useActions()
+
+  React.useEffect(() => {
+    fetchData(id)
+  }, [city])
+
+  const changeConverter = () => {
+    setConverter(!converter)
+  }
+
+  if (loading) {
+    return (
+      <div
+        style={{height: '100vh', display: "flex", justifyContent: "center", alignItems: "center"}}
+      >
+        Идет загрузка...
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div
+        style={{height: '100vh', display: "flex", justifyContent: "center", alignItems: "center"}}
+      >
+        {error}
+      </div>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{display: "flex"}}>
+      <Sidebar converterCtoF={converter}/>
+      <Main converterCtoF={converter}/>
     </div>
   );
 }

@@ -1,0 +1,32 @@
+.container {
+  background-color: #17212B;
+  height: 100vh;
+  width: 30%;
+  padding: 40px;
+  box-shadow: 5px 0 10px -5px rgba(0, 0, 0, .5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherState {
+  font-size: 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 18px;
+  color: #708499;
+  padding: 20px 0;
+}
+
+.location {
+  font-size: 18px;
+  font-weight: bold;
+  color: #708499;
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}

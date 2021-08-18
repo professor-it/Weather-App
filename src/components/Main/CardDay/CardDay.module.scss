@@ -1,0 +1,46 @@
+.cardDay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #17212B;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px 2px rgba(5, 5, 5, 0.2);
+  flex: 0 0 18%;
+  margin: 10px 3px;
+  padding: 20px 10px;
+  height: 230px;
+}
+
+.dayTitle {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.img {
+  margin: 5px 0;
+  height: 100%;
+}
+
+.wrapperTemp {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  margin-top: 10px;
+}
+
+.maxTemp {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.minTemp {
+  font-size: 15px;
+  color: #708499;
+}
+
+.maxTemp i, .minTemp i {
+  font-size: 18px;
+}
