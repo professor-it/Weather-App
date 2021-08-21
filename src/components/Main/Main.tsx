@@ -4,16 +4,22 @@ import CardDay from "./CardDay/CardDay";
 import {useTypesSelector} from "../../hooks/useTypesSelector";
 
 import NavigationIcon from '@material-ui/icons/Navigation';
+import {useActions} from "../../hooks/useActions";
 
 interface Main {
   converterCtoF: boolean;
 }
 
 const Main: React.FC<Main> = ({converterCtoF}) => {
-  const {date} = useTypesSelector(state => state.weather)
+  const {date, converter} = useTypesSelector(state => state.weather)
+  const {setConverter} = useActions()
 
   return (
     <div className={classes.container}>
+      <div className={classes.conv}>
+        <div className={classes.convEl} onClick={() => setConverter(false)}><p style={converter ? {color: '#708499'} : {}}>°C</p></div>
+        <div className={classes.convEl} onClick={() => setConverter(true)}><p style={!converter ? {color: '#708499'} : {}}>°F</p></div>
+      </div>
       <div className={classes.days}>
         {date.consolidated_weather.map((item: any, index: number) => {
           if (index <= 4) {

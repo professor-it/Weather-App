@@ -47,3 +47,12 @@ export const fetchData = (id: number | null) => {
     }
   }
 }
+
+export const setConverter = (conv: boolean) => {
+  return async (dispatch: Dispatch<WeatherAction>) => {
+    dispatch({
+      type: WeatherActionTypes.CONVERTER,
+      payload: conv
+    })
+  }
+}

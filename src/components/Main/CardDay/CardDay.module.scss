@@ -44,3 +44,21 @@
 .maxTemp i, .minTemp i {
   font-size: 18px;
 }
+
+@media (max-width: 768px) {
+  .cardDay {
+    flex: 0 0 48%;
+  }
+  .dayTitle {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardDay {
+    flex: 0 0 100%;
+  }
+}

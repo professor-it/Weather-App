@@ -30,3 +30,9 @@
   align-items: center;
   font-family: 'Montserrat', sans-serif;
 }
+
+@media (max-width: 998px) {
+  .container {
+    width: 100%;
+  }
+}

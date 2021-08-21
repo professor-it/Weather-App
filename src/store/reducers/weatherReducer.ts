@@ -5,6 +5,7 @@ const initialState: WeatherState = {
     city: 'London',
     cities: [],
     id: 44418,
+    converter: false,
     loading: true,
     error: null
 }
@@ -21,6 +22,8 @@ const weatherReducer = (state = initialState, action: WeatherAction):WeatherStat
             return {...state, loading: false, date: action.payload}
         case WeatherActionTypes.FETCH_WEATHER_ERROR:
             return {...state, loading: false, error: action.payload}
+        case WeatherActionTypes.CONVERTER:
+            return {...state, converter: action.payload}
         default:
             return state
     }

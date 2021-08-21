@@ -3,6 +3,7 @@ export interface WeatherState {
     city: string;
     cities: any[];
     id: number | null;
+    converter: boolean;
     loading: boolean;
     error: null | string;
 }
@@ -12,7 +13,8 @@ export enum WeatherActionTypes {
     FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS',
     FETCH_WEATHER_ERROR = 'FETCH_WEATHER_ERROR',
     FETCH_WEATHER_CITY = 'FETCH_WEATHER_CITY',
-    FETCH_WEATHER_CITIES = 'FETCH_WEATHER_CITIES'
+    FETCH_WEATHER_CITIES = 'FETCH_WEATHER_CITIES',
+    CONVERTER = 'CONVERTER',
 }
 
 interface FetchWeatherAction {
@@ -40,4 +42,9 @@ interface FetchWeatherCitiesAction {
     payload: any[];
 }
 
-export type WeatherAction = FetchWeatherAction | FetchWeatherSuccessAction | FetchWeatherErrorAction | FetchWeatherCityAction | FetchWeatherCitiesAction
+interface ConverterAction {
+    type: WeatherActionTypes.CONVERTER;
+    payload: boolean;
+}
+
+export type WeatherAction = FetchWeatherAction | FetchWeatherSuccessAction | FetchWeatherErrorAction | FetchWeatherCityAction | FetchWeatherCitiesAction | ConverterAction

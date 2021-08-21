@@ -1,30 +1,25 @@
 import React from 'react';
 import Main from "./components/Main/Main";
 import Sidebar from "./components/Sidebar/Sidebar";
-import {fetchCity, fetchData} from "./store/actions/weather";
+import {fetchData} from "./store/actions/weather";
 import {useActions} from "./hooks/useActions";
 import {useTypesSelector} from "./hooks/useTypesSelector";
-import classes from "./components/Main/Main.module.scss";
+import Loader from "./components/Loader/Loader";
 
 function App() {
-  const {city, id, loading, error} = useTypesSelector(state => state.weather)
-  const [converter, setConverter] = React.useState(false);
+  const {city, id, loading, error, converter} = useTypesSelector(state => state.weather)
   const {fetchData} = useActions()
 
   React.useEffect(() => {
     fetchData(id)
   }, [city])
 
-  const changeConverter = () => {
-    setConverter(!converter)
-  }
-
   if (loading) {
     return (
       <div
         style={{height: '100vh', display: "flex", justifyContent: "center", alignItems: "center"}}
       >
-        Идет загрузка...
+        <Loader/>
       </div>
     )
   }
@@ -40,7 +35,7 @@ function App() {
   }
 
   return (
-    <div style={{display: "flex"}}>
+    <div className='app'>
       <Sidebar converterCtoF={converter}/>
       <Main converterCtoF={converter}/>
     </div>
